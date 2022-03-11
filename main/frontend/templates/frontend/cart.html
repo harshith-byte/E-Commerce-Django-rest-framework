@@ -1,0 +1,36 @@
+{% include 'frontend/nav.html' %}
+{% load static %}
+{% block content %}
+<div class="container" id="cart">
+    <h1 style="text-align: center;">Cart Items</h1>
+
+</div>
+<script>
+            build()
+        function build(){
+            var sp1=document.getElementById('home')
+            
+            var url = 'http://0.0.0.0:8000/api/cart_item/'
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data){
+            console.log('data:',data)
+            var list = data
+            
+            for( var i in list){
+
+                var item = `<div class="media" id=${i}>
+                                <img class="mr-3" src="http://0.0.0.0:8000${list[i].product_image}" alt="Generic placeholder image">
+                                <div class="media-body">
+                                    <h5 class="mt-0">Media heading</h5>
+                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                </div>
+                            </div>`
+                sp1.innerHTML+=item
+            }
+    
+  })
+  
+        }
+</script>
+{% endblock %}

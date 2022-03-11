@@ -1,0 +1,44 @@
+{% include 'frontend/nav.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row" id="home">
+        
+    </div>
+</div>
+    <script>
+        build()
+        function build(){
+            var sp1=document.getElementById('home')
+            
+            var url = 'http://0.0.0.0:8000/api/category-list/{{ob.id}}/'
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(data){
+            console.log('data:',data)
+            var list = data
+            
+            for( var i in list){
+
+                var item = `<div class="col-sm-12 col-md-4 mt-4" >
+                                <div class="card">
+                                    <img class="card-img-top" src="http://0.0.0.0:8000${list[i].product_image}" alt="Card image cap"  style="height:300px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${list[i].product_name}</h5>
+                                        <p class="card-text">Price : Rs ${list[i].price}</p>
+                                        <a href="/product/${list[i].id}" class="btn btn-sm btn-outline-primary">Visit Product</a>
+
+                                    </div>
+                                </div>
+                            </div>`
+                sp1.innerHTML+=item
+            }
+    
+  })
+        }
+    </script>
+
+
+{% include 'frontend/footer.html' %}
+{% endblock %}
