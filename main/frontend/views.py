@@ -44,3 +44,9 @@ def cart_add(request):
             quantity=1,
         )
         return render(request, 'frontend/cart.html')
+
+def login(request):
+    return render(request,'frontend/login.html')
+
+def register(request):
+    return render(request,'frontend/register.html')

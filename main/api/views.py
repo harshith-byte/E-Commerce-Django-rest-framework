@@ -11,6 +11,8 @@ from .serializers import *
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import AllowAny
 from .serializers import MyTokenObtainPairSerializer
+
+from rest_framework.authtoken.models import Token
 # Create your views here.
 
 @api_view(['GET'])
@@ -77,10 +79,15 @@ def register_user(request):
 @api_view(['POST'])
 def login_user(request):
     data=request.data
-    u=data['Username']
-    p=data['Password']
-    user = authenticate(username=u, password=p)
+
+    user = authenticate(username=data['Username'], password=data['Password'])
     if user is not None:
+        try:
+            Token.objects.get(user=user.id)
+        except:
+            Token.objects.create(
+            user=user
+        )
         return Response({"message":"user logged in successfully"})
 
     return Response({"message":"Username or Password is incorrect"})
