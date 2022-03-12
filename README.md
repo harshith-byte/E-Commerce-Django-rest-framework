@@ -1,6 +1,6 @@
 # E-Commerce-Django-rest-framework
 
-##### About Project
+## About Project
 - E-commerce is all about buying and selling of products.
 
 - In this project we have three Database tables 
@@ -32,7 +32,7 @@
 
 - Django provides it's default admin panel where superuser can create, update or delete data
 
-##### Steps to Run the Project(only for win/linux):
+## Steps to Run the Project(only for win/linux):
 
 - Install docker and docker-compose *if not installed*
   - [docker-installation](https://docs.docker.com/compose/install/)
