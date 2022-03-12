@@ -19,7 +19,8 @@
   - 0.0.0.0:8000/api/category_list/                     To fetch all categories
   - 0.0.0.0:8000/api/category-list/<str:pk>/            To fetch all products present in particular category
   - 0.0.0.0:8000/api/product-list/                      To fetch all the products present in products table
-  - 0.0.0.0:8000/apiselected-product/<str:pk>/          To fetch specific product from product table
+  - 0.0.0.0:8000/api/selected-product/<str:pk>/         To fetch specific product from product table
+  - 0.0.0.0:8000/api/cart_item/                         To fetch all the items in the cart 
   ```
   
 - Docker Container is used to run this project
@@ -27,11 +28,7 @@
 - Framework
   - Django and Django rest-framework 
 
-- Login, cart and about pages are yet to be developed
-
-- for login and register Simple JWT-Authentication is available in main/oauth_app/views.py 
-
-- react library is requried for login and register authentication
+- **Login, cart pages are yet to be developed**
 
 - Django provides it's default admin panel where superuser can create, update or delete data
 
